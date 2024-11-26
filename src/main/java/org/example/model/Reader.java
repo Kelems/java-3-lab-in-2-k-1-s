@@ -1,57 +1,75 @@
 package org.example.model;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
-// Класс, представляющий модель данных читателя.
 public class Reader {
-    private Long id; // Уникальный идентификатор читателя
-    private String name; // Имя читателя
-    private String cardNumber; // Номер читательского билета
-    private int booksBorrowed; // Количество книг, которые читатель взял в библиотеке
-    private Date lastBorrowDate; // Дата последнего взятия книги (если книга просрочена, это поле будет заполнено)
+    private int id; // Уникальный идентификатор читателя
+    private String firstName; // Имя читателя
+    private String lastName; // Фамилия читателя
+    private String phone; // Телефон читателя
+    private String email; // email читателя
+
+    // Статический блок инициализации
+    static {
+        List<Reader> readers = new ArrayList<>();
+        readers.add(new Reader(1, "Иван", "Иванов", "1234567890", "ivan@example.com"));
+        readers.add(new Reader(2, "Петр", "Петров", "0987654321", "petr@example.com"));
+        readers.add(new Reader(3, "Анна", "Сидорова", "1122334455", "anna@example.com"));
+        readers.add(new Reader(4, "Елена", "Смирнова", "5566778899", "elena@example.com"));
+        readers.add(new Reader(5, "Дмитрий", "Козлов", "9988776655", "dmitry@example.com"));
+    }
 
     // Конструкторы
-    public Reader() {
-    }
+    public Reader() {}
 
-    public Reader(Long id, String name, String cardNumber, int booksBorrowed, Date lastBorrowDate) {
+    public Reader(int id, String firstName, String lastName, String phone, String email) {
         this.id = id;
-        this.name = name;
-        this.cardNumber = cardNumber;
-        this.booksBorrowed = booksBorrowed;
-        this.lastBorrowDate = lastBorrowDate;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.email = email;
     }
 
-    // Геттеры
-    public Long getId() {
+    // Геттеры и сеттеры
+    public int getId() {
         return id;
     }
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
-    public String getCardNumber() {
-        return cardNumber;
+    public String getLastName() {
+        return lastName;
     }
-    public int getBooksBorrowed() {
-        return booksBorrowed;
+    public String getPhone() {
+        return phone;
     }
-    public Date getLastBorrowDate() {
-        return lastBorrowDate;
+    public String getEmail() {
+        return email;
     }
-    // Сеттеры
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
-    public void setCardNumber(String cardNumber) {
-        this.cardNumber = cardNumber;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
-    public void setBooksBorrowed(int booksBorrowed) {
-        this.booksBorrowed = booksBorrowed;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
-    public void setLastBorrowDate(Date lastBorrowDate) {
-        this.lastBorrowDate = lastBorrowDate;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return
+            " || Id: " + id +
+            " || ФИО: '" + lastName + firstName + '\'' +
+            " || Номер телефона: " + phone  +
+            " || Почтовый адрес: " + email
+        ;
     }
 }
