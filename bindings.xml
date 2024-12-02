@@ -1,0 +1,24 @@
+<!-- bindings.xml -->
+<jaxws:bindings
+        wsdlLocation="http://127.0.0.1:8081/reader?wsdl"
+        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:jaxws="http://java.sun.com/xml/ns/jaxws">
+
+    <!-- Асинхронное сопоставление для ReaderService -->
+    <jaxws:bindings node="//wsdl:portType[@name='ReaderService']">
+        <jaxws:bindings node="wsdl:operation[@name='canBorrowBook']">
+            <jaxws:enableAsyncMapping>true</jaxws:enableAsyncMapping>
+        </jaxws:bindings>
+    </jaxws:bindings>
+
+    <!-- Асинхронное сопоставление для AvailabilityService -->
+    <jaxws:bindings node="//wsdl:portType[@name='AvailabilityService']">
+        <jaxws:bindings node="wsdl:operation[@name='isBookAvailable']">
+            <jaxws:enableAsyncMapping>true</jaxws:enableAsyncMapping>
+        </jaxws:bindings>
+        <jaxws:bindings node="wsdl:operation[@name='isBookForReadingRoomOnly']">
+            <jaxws:enableAsyncMapping>true</jaxws:enableAsyncMapping>
+        </jaxws:bindings>
+    </jaxws:bindings>
+
+</jaxws:bindings>

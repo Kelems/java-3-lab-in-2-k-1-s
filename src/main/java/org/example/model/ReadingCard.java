@@ -11,9 +11,10 @@ public class ReadingCard {
     private Date expiryDate; // Дата истечения срока действия билета
     private boolean active; // Активен ли читательский билет
 
-    // Статический блок инициализации
+    // Статический список читательских билетов
+    private static List<ReadingCard> readingCards = new ArrayList<>();
+
     static {
-        List<ReadingCard> readingCards = new ArrayList<>();
         readingCards.add(new ReadingCard(1, 1, new Date(), new Date(System.currentTimeMillis() + 31536000000L), true));
         readingCards.add(new ReadingCard(2, 2, new Date(), new Date(System.currentTimeMillis() + 31536000000L), true));
         readingCards.add(new ReadingCard(3, 3, new Date(), new Date(System.currentTimeMillis() + 31536000000L), true));
@@ -32,6 +33,11 @@ public class ReadingCard {
     }
 
     // Геттеры и сеттеры
+
+    // Метод для получения списка читательских билетов
+    public static List<ReadingCard> getReadingCards() {
+        return readingCards;
+    }
     public int getId() {
         return id;
     }

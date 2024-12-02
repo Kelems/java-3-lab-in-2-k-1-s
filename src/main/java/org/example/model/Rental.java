@@ -12,9 +12,9 @@ public class Rental {
     private LocalDateTime expectedReturnDate; // Ожидаемая дата возврата
     private LocalDateTime returnDate; // Дата возврата книги
 
+    private static List<Rental> rentals = new ArrayList<>();
     // Статический блок инициализации
     static {
-        List<Rental> rentals = new ArrayList<>();
         rentals.add(new Rental(1, 1, 1, LocalDateTime.now(), null));
         rentals.add(new Rental(2, 2, 2, LocalDateTime.now(), null));
         rentals.add(new Rental(3, 3, 3, LocalDateTime.now(), null));
@@ -51,9 +51,7 @@ public class Rental {
 
     // Метод для получения объекта Book по bookId
     private Book getBookById(int bookId) {
-        // Здесь должен быть код для получения объекта Book по bookId
-        // Например, можно использовать список книг, который был инициализирован в статическом блоке класса Book
-        List<Book> books = Book.getBooks(); // Предполагаем, что есть метод getBooks() в классе Book
+        List<Book> books = Book.getBooks();
         for (Book book : books) {
             if (book.getId() == bookId) {
                 return book;
@@ -63,6 +61,12 @@ public class Rental {
     }
 
     // Геттеры
+
+    // Метод для получения списка аренд
+    public static List<Rental> getRentals() {
+        return rentals;
+    }
+
     public int getId() {
         return id;
     }

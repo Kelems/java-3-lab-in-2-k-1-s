@@ -36,6 +36,11 @@ public class Book {
     }
 
     // Геттеры и сеттеры
+
+    public static List<Book> getBook() {
+        return books;
+    }
+
     public int getId() {
         return id;
     }

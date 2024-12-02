@@ -11,8 +11,8 @@ public class Reader {
     private String email; // email читателя
 
     // Статический блок инициализации
+private static List<Reader> readers = new ArrayList<>();
     static {
-        List<Reader> readers = new ArrayList<>();
         readers.add(new Reader(1, "Иван", "Иванов", "1234567890", "ivan@example.com"));
         readers.add(new Reader(2, "Петр", "Петров", "0987654321", "petr@example.com"));
         readers.add(new Reader(3, "Анна", "Сидорова", "1122334455", "anna@example.com"));
@@ -32,6 +32,10 @@ public class Reader {
     }
 
     // Геттеры и сеттеры
+
+    public static List<Reader> getReader() {
+        return readers;
+    }
     public int getId() {
         return id;
     }
