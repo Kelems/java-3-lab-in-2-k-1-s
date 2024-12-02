@@ -1,0 +1,16 @@
+<jaxws:bindings
+        wsdlLocation="http://127.0.0.1:8081/availability?wsdl"
+        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:jaxws="http://java.sun.com/xml/ns/jaxws">
+
+    <!-- Асинхронное сопоставление для AvailabilityService -->
+    <jaxws:bindings node="//wsdl:portType[@name='IAvailabilityService']">
+        <jaxws:bindings node="wsdl:operation[@name='isBookAvailable']">
+            <jaxws:enableAsyncMapping>true</jaxws:enableAsyncMapping>
+        </jaxws:bindings>
+        <jaxws:bindings node="wsdl:operation[@name='isBookForReadingRoomOnly']">
+            <jaxws:enableAsyncMapping>true</jaxws:enableAsyncMapping>
+        </jaxws:bindings>
+    </jaxws:bindings>
+
+</jaxws:bindings>

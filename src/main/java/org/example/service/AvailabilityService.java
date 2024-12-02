@@ -9,14 +9,14 @@ public class AvailabilityService implements IAvailabilityService {
 
     @Override
     public boolean isBookAvailable(Book book) {
-        // Проверка, что книга не равна null и не выдана в аренду
+        // Проверка, что книга есть и не выдана в аренду
         if (book == null) return false;
         return !book.isIssued();
     }
 
     @Override
     public boolean isBookForReadingRoomOnly(Book book) {
-        // Проверка, что книга не равна null и доступна только в читальном зале
+        // Проверка, что книга не есть и доступна только в читальном зале
         if (book == null) return false;
         return book.isReadingRoom();
     }

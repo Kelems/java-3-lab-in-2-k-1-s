@@ -2,12 +2,12 @@
         wsdlLocation="http://127.0.0.1:8081/reader?wsdl"
         xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
         xmlns:jaxws="http://java.sun.com/xml/ns/jaxws">
+
     <!-- Асинхронное сопоставление для ReaderService -->
     <jaxws:bindings node="//wsdl:portType[@name='IReaderService']">
         <jaxws:bindings node="wsdl:operation[@name='canBorrowBook']">
             <jaxws:enableAsyncMapping>true</jaxws:enableAsyncMapping>
         </jaxws:bindings>
     </jaxws:bindings>
-
 
 </jaxws:bindings>
