@@ -16,8 +16,6 @@ public class ReaderService implements IReaderService {
     @Override
     public boolean canBorrowBook(Reader reader) {
         System.out.println("Запуск сервиса Reader");
-        // Проверка, что читатель есть
-        if (reader == null) return false;
 
         // Проверка есть ли у читателя билет
         if (!hasValidReadingCard(reader.getId())) return false;
@@ -28,7 +26,7 @@ public class ReaderService implements IReaderService {
         // Проверка, что у читателя нет просроченных книг
         if (hasOverdueBooks(reader.getId())) return false;
 
-        // Запуск таймера для вывода сообщения "Идет поиск читателя..."
+        // Демонстрация ассинхронности
         startSearchingMessageTimer();
 
         System.out.println("Сервис Reader выполнен");
@@ -45,11 +43,11 @@ public class ReaderService implements IReaderService {
             }
         };
 
-        // Запуск задачи каждые 2000 миллисекунд (2 секунды)
-        timer.scheduleAtFixedRate(task, 0, 2000);
+        // Запуск задачи каждые 2000 миллисекунд (1 секунды)
+        timer.scheduleAtFixedRate(task, 0, 1000);
 
         try {
-            Thread.sleep(10000); // Задержка на 10 секунд
+            Thread.sleep(5000); // Задержка на 10 секунд
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

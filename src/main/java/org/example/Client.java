@@ -1,14 +1,16 @@
 package org.example;
 
 import org.example.client.*;
-import org.example.model.Book;
 import org.example.model.Reader;
+import org.example.model.Book;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import javax.xml.ws.AsyncHandler;
 import javax.xml.ws.Response;
+
 import java.net.URL;
+
 import java.util.Scanner;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -37,27 +39,16 @@ public class Client {
 
         // Ввод данных пользователем
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите ID читателя:");
-        int readerId = scanner.nextInt();
-        scanner.nextLine(); // Очистка буфера
 
-        System.out.println("Введите ID книги:");
+        System.out.print("Введите ID читателя: ");
+        int readerId = scanner.nextInt();
+
+        System.out.print("Введите ID книги: ");
         int bookId = scanner.nextInt();
-        scanner.nextLine(); // Очистка буфера
 
         // Поиск читателя и книги по ID
-        org.example.model.Reader modelReader = findReaderById(readerId);
-        org.example.model.Book modelBook = findBookById(bookId);
-
-        if (modelReader == null) {
-            System.out.println("Читатель с ID " + readerId + " не найден.");
-            return;
-        }
-
-        if (modelBook == null) {
-            System.out.println("Книга с ID " + bookId + " не найдена.");
-            return;
-        }
+        org.example.model.Reader modelReader = org.example.model.Reader.findReaderById(readerId);
+        org.example.model.Book modelBook = org.example.model.Book.findBookById(bookId);
 
         // Создаем объект Reader из сгенерированных классов
         org.example.client.Reader clientReader = new org.example.client.Reader();
@@ -137,9 +128,13 @@ public class Client {
                 System.out.println("Книга " + modelBook.getTitle() + " найдена. Выдать книгу на неделю? (да/нет)");
             }
 
+            // откуда в answer берется пробел с ничего?...
             String answer = scanner.nextLine();
+            String response = scanner.nextLine();
+//            System.out.println("После сканера " + answer);
+//            System.out.println("После сканера " + response);
 
-            if (answer.equalsIgnoreCase("да")) {
+            if (response.toLowerCase().equals("да")) {
                 boolean rentalResult = rentalServiceProxy.rentBook(clientReader, clientBook, isBookForReadingRoomOnly);
                 if (rentalResult) {
                     System.out.println("Книга успешно арендована.");
@@ -154,23 +149,4 @@ public class Client {
         }
     }
 
-    // Метод для поиска читателя по ID
-    private static org.example.model.Reader findReaderById(int readerId) {
-        for (org.example.model.Reader reader : org.example.model.Reader.getReader()) {
-            if (reader.getId() == readerId) {
-                return reader;
-            }
-        }
-        return null;
-    }
-
-    // Метод для поиска книги по ID
-    private static org.example.model.Book findBookById(int bookId) {
-        for (org.example.model.Book book : org.example.model.Book.getBooks()) {
-            if (book.getId() == bookId) {
-                return book;
-            }
-        }
-        return null;
-    }
 }

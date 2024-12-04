@@ -11,6 +11,6 @@ public class Publisher {
         Endpoint.publish("http://127.0.0.1:8081/reader", new ReaderService());
         Endpoint.publish("http://127.0.0.1:8081/availability", new AvailabilityService());
         Endpoint.publish("http://127.0.0.1:8081/rental", new RentalService());
-        System.out.println("Services started on http://127.0.0.1:8081");
+        System.out.println("Сервисы запущены");
     }
 }

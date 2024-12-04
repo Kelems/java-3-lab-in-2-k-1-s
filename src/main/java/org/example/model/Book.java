@@ -17,10 +17,9 @@ public class Book {
     static {
         books.add(new Book(1, "Война и мир", "Лев Толстой", "Стеллаж 1, Полка 2", false, false));
         books.add(new Book(2, "Преступление и наказание", "Федор Достоевский", "Стеллаж 2, Полка 3", false, false));
-        books.add(new Book(3, "1984", "Джордж Оруэлл", "Стеллаж 3, Полка 4", false, false));
-        books.add(new Book(4, "Убить пересмешника", "Харпер Ли", "Стеллаж 4, Полка 5", false, false));
+        books.add(new Book(3, "1984", "Джордж Оруэлл", "Стеллаж 3, Полка 4", true, false));
+        books.add(new Book(4, "Убить пересмешника", "Харпер Ли", "Стеллаж 4, Полка 5", false, true));
         books.add(new Book(5, "Мастер и Маргарита", "Михаил Булгаков", "Стеллаж 5, Полка 6", false, false));
-        // Добавьте другие книги по необходимости
     }
 
     // Конструкторы
@@ -39,6 +38,17 @@ public class Book {
 
     public static List<Book> getBook() {
         return books;
+    }
+
+    public static Book findBookById(int bookId) {
+        for (org.example.model.Book book : org.example.model.Book.getBooks()) {
+            if (book.getId() == bookId) {
+                return book;
+            }
+        }
+        // Если readerId не найден, выбрасываем исключение
+        System.out.println("Книга с ID " + bookId + " не найдена.");
+        throw new IllegalArgumentException("Книга с ID " + bookId + " не найдена.");
     }
 
     public int getId() {

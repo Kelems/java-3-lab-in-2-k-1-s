@@ -36,6 +36,16 @@ private static List<Reader> readers = new ArrayList<>();
     public static List<Reader> getReader() {
         return readers;
     }
+
+    public static Reader findReaderById(int readerId) {
+        for (org.example.model.Reader reader : org.example.model.Reader.getReader()) {
+            if (reader.getId() == readerId) {
+                return reader;
+            }
+        }
+        System.out.println("Читатель с ID " + readerId + " не найден.");
+        throw new IllegalArgumentException("Читатель с ID " + readerId + " не найден.");
+    }
     public int getId() {
         return id;
     }
