@@ -15,11 +15,21 @@ public class Rental {
     private static List<Rental> rentals = new ArrayList<>();
     // Статический блок инициализации
     static {
-        rentals.add(new Rental(1, 1, 1, LocalDateTime.now(), null));
-        rentals.add(new Rental(2, 2, 2, LocalDateTime.now(), null));
-        rentals.add(new Rental(3, 3, 3, LocalDateTime.now(), null));
-        rentals.add(new Rental(4, 4, 4, LocalDateTime.now(), null));
-        rentals.add(new Rental(5, 5, 5, LocalDateTime.now(), null));
+        rentals.add(new Rental(1, 1, 1, LocalDateTime.now().minusDays(10), null)); // Просрочена
+        rentals.add(new Rental(2, 2, 2, LocalDateTime.now().minusDays(5), null));
+        rentals.add(new Rental(3, 3, 3, LocalDateTime.now().minusDays(3), null));
+        rentals.add(new Rental(4, 4, 4, LocalDateTime.now().minusDays(2), null));
+        rentals.add(new Rental(5, 5, 5, LocalDateTime.now().minusDays(1), null));
+        rentals.add(new Rental(6, 6, 1, LocalDateTime.now().minusDays(6), null));
+        rentals.add(new Rental(7, 7, 2, LocalDateTime.now().minusDays(7), null));
+        rentals.add(new Rental(8, 8, 3, LocalDateTime.now().minusDays(8), null));
+        rentals.add(new Rental(9, 9, 4, LocalDateTime.now().minusDays(9), null));
+        rentals.add(new Rental(10, 10, 1, LocalDateTime.now().minusDays(10), null)); // Просрочена
+        rentals.add(new Rental(11, 1, 1, LocalDateTime.now().minusDays(11), null)); // Просрочена
+        rentals.add(new Rental(12, 2, 1, LocalDateTime.now().minusDays(12), null)); // Просрочена
+        rentals.add(new Rental(13, 3, 3, LocalDateTime.now().minusDays(13), null)); // Просрочена
+        rentals.add(new Rental(14, 4, 4, LocalDateTime.now().minusDays(14), null)); // Просрочена
+        rentals.add(new Rental(15, 5, 5, LocalDateTime.now().minusDays(15), null)); // Просрочена
 
         // Устанавливаем expectedReturnDate для каждой аренды
         for (Rental rental : rentals) {

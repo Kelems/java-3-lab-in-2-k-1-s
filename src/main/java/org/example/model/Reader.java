@@ -81,7 +81,7 @@ private static List<Reader> readers = new ArrayList<>();
     public String toString() {
         return
             " || Id: " + id +
-            " || ФИО: '" + lastName + firstName + '\'' +
+            " || ФИО: '" + lastName + " " + firstName + '\'' +
             " || Номер телефона: " + phone  +
             " || Почтовый адрес: " + email
         ;

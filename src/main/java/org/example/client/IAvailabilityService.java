@@ -31,50 +31,6 @@ public interface IAvailabilityService {
      * 
      * @param arg0
      * @return
-     *     returns javax.xml.ws.Response<org.example.client.IsBookAvailableResponse>
-     */
-    @WebMethod(operationName = "isBookAvailable")
-    @RequestWrapper(localName = "isBookAvailable", targetNamespace = "http://service.example.org/", className = "org.example.client.IsBookAvailable")
-    @ResponseWrapper(localName = "isBookAvailableResponse", targetNamespace = "http://service.example.org/", className = "org.example.client.IsBookAvailableResponse")
-    public Response<IsBookAvailableResponse> isBookAvailableAsync(
-        @WebParam(name = "arg0", targetNamespace = "")
-        Book arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @param asyncHandler
-     * @return
-     *     returns java.util.concurrent.Future<? extends java.lang.Object>
-     */
-    @WebMethod(operationName = "isBookAvailable")
-    @RequestWrapper(localName = "isBookAvailable", targetNamespace = "http://service.example.org/", className = "org.example.client.IsBookAvailable")
-    @ResponseWrapper(localName = "isBookAvailableResponse", targetNamespace = "http://service.example.org/", className = "org.example.client.IsBookAvailableResponse")
-    public Future<?> isBookAvailableAsync(
-        @WebParam(name = "arg0", targetNamespace = "")
-        Book arg0,
-        @WebParam(name = "asyncHandler", targetNamespace = "")
-        AsyncHandler<IsBookAvailableResponse> asyncHandler);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "isBookAvailable", targetNamespace = "http://service.example.org/", className = "org.example.client.IsBookAvailable")
-    @ResponseWrapper(localName = "isBookAvailableResponse", targetNamespace = "http://service.example.org/", className = "org.example.client.IsBookAvailableResponse")
-    @Action(input = "http://service.example.org/IAvailabilityService/isBookAvailableRequest", output = "http://service.example.org/IAvailabilityService/isBookAvailableResponse")
-    public boolean isBookAvailable(
-        @WebParam(name = "arg0", targetNamespace = "")
-        Book arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
      *     returns javax.xml.ws.Response<org.example.client.IsBookForReadingRoomOnlyResponse>
      */
     @WebMethod(operationName = "isBookForReadingRoomOnly")
@@ -112,6 +68,50 @@ public interface IAvailabilityService {
     @ResponseWrapper(localName = "isBookForReadingRoomOnlyResponse", targetNamespace = "http://service.example.org/", className = "org.example.client.IsBookForReadingRoomOnlyResponse")
     @Action(input = "http://service.example.org/IAvailabilityService/isBookForReadingRoomOnlyRequest", output = "http://service.example.org/IAvailabilityService/isBookForReadingRoomOnlyResponse")
     public boolean isBookForReadingRoomOnly(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Book arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns javax.xml.ws.Response<org.example.client.IsBookAvailableResponse>
+     */
+    @WebMethod(operationName = "isBookAvailable")
+    @RequestWrapper(localName = "isBookAvailable", targetNamespace = "http://service.example.org/", className = "org.example.client.IsBookAvailable")
+    @ResponseWrapper(localName = "isBookAvailableResponse", targetNamespace = "http://service.example.org/", className = "org.example.client.IsBookAvailableResponse")
+    public Response<IsBookAvailableResponse> isBookAvailableAsync(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Book arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @param asyncHandler
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "isBookAvailable")
+    @RequestWrapper(localName = "isBookAvailable", targetNamespace = "http://service.example.org/", className = "org.example.client.IsBookAvailable")
+    @ResponseWrapper(localName = "isBookAvailableResponse", targetNamespace = "http://service.example.org/", className = "org.example.client.IsBookAvailableResponse")
+    public Future<?> isBookAvailableAsync(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Book arg0,
+        @WebParam(name = "asyncHandler", targetNamespace = "")
+        AsyncHandler<IsBookAvailableResponse> asyncHandler);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "isBookAvailable", targetNamespace = "http://service.example.org/", className = "org.example.client.IsBookAvailable")
+    @ResponseWrapper(localName = "isBookAvailableResponse", targetNamespace = "http://service.example.org/", className = "org.example.client.IsBookAvailableResponse")
+    @Action(input = "http://service.example.org/IAvailabilityService/isBookAvailableRequest", output = "http://service.example.org/IAvailabilityService/isBookAvailableResponse")
+    public boolean isBookAvailable(
         @WebParam(name = "arg0", targetNamespace = "")
         Book arg0);
 
