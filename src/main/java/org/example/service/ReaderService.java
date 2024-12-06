@@ -18,13 +18,19 @@ public class ReaderService implements IReaderService {
         System.out.println("Запуск сервиса Reader");
 
         // Проверка есть ли у читателя билет
-        if (!hasValidReadingCard(reader.getId())) return false;
+        if (!hasValidReadingCard(reader.getId())){
+            return false;
+        }
 
         // Проверка, что читателем взято < 4 книг
-        if (hasTooManyBooks(reader.getId())) return false;
+        if (!hasTooManyBooks(reader.getId())) {
+            return false;
+        }
 
         // Проверка, что у читателя нет просроченных книг
-        if (hasOverdueBooks(reader.getId())) return false;
+        if (hasOverdueBooks(reader.getId())){
+            return false;
+        }
 
         // Демонстрация ассинхронности
         startSearchingMessageTimer();
@@ -43,11 +49,11 @@ public class ReaderService implements IReaderService {
             }
         };
 
-        // Запуск задачи каждые 2000 миллисекунд (1 секунды)
-        timer.scheduleAtFixedRate(task, 0, 1000);
+        // Запуск задачи каждые 2000 миллисекунд (2 секунды)
+        timer.scheduleAtFixedRate(task, 0, 2000);
 
         try {
-            Thread.sleep(5000); // Задержка на 10 секунд
+            Thread.sleep(4000); // Задержка на 4 секунды
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -62,9 +68,11 @@ public class ReaderService implements IReaderService {
         for (ReadingCard card : cards) {
             // Проверка, что билет активен и принадлежит данному читателю
             if (card.getReaderId() == readerId && card.isActive()) {
+                System.out.println("У читатетля есть читательский билет");
                 return true;
             }
         }
+        System.out.println("У читатетля нет читательского билета");
         return false;
     }
 
@@ -78,7 +86,8 @@ public class ReaderService implements IReaderService {
                 count++;
             }
         }
-        return count >= 4;
+        System.out.println("Книг было взято читателем на данный момент: " + count);
+        return count < 4;
     }
 
     private boolean hasOverdueBooks(int readerId) {
@@ -87,9 +96,11 @@ public class ReaderService implements IReaderService {
         for (Rental rental : rentals) {
             // Проверка, что у читателя есть просроченные книги
             if (rental.getReaderId() == readerId && rental.getReturnDate() == null && rental.getExpectedReturnDate().isBefore(LocalDateTime.now())) {
+                System.out.println("Читатель просрочил книгу с ID " + rental.getBookId() + ". Ожидаемая дата возврата: " + rental.getExpectedReturnDate());
                 return true;
             }
         }
+        System.out.println("Читатель не имеет просроченных книг.");
         return false;
     }
 }

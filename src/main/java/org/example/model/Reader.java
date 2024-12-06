@@ -18,6 +18,7 @@ private static List<Reader> readers = new ArrayList<>();
         readers.add(new Reader(3, "Анна", "Сидорова", "1122334455", "anna@example.com"));
         readers.add(new Reader(4, "Елена", "Смирнова", "5566778899", "elena@example.com"));
         readers.add(new Reader(5, "Дмитрий", "Козлов", "9988776655", "dmitry@example.com"));
+        readers.add(new Reader(6, "Фаргус", "Иванов", "6445178544", "fargus@example.com"));
     }
 
     // Конструкторы

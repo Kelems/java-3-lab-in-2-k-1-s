@@ -42,17 +42,18 @@ public class Client {
         // Вывод данных читателя и его читательского билета
         System.out.println("Данные читателя:");
         System.out.println(modelReader);
+
         if (modelReadingCard != null) {
-            System.out.println("Данные читательского билета:");
+            System.out.println("\nДанные читательского билета:");
             System.out.println(modelReadingCard);
         } else {
-            System.out.println("У читателя нет активного читательского билета.");
+            System.out.println("\nУ читателя нет активного читательского билета.");
         }
 
         // Вывод книг, которые читатель арендует в данный момент
         List<org.example.model.Rental> currentRentals = findCurrentRentalsByReaderId(readerId);
         if (!currentRentals.isEmpty()) {
-            System.out.println("Книги, которые читатель арендует в данный момент:");
+            System.out.println("\nКниги, которые читатель арендует в данный момент:");
             for (org.example.model.Rental rental : currentRentals) {
                 org.example.model.Book book = org.example.model.Book.findBookById(rental.getBookId());
                 System.out.println(book);
@@ -150,7 +151,8 @@ public class Client {
 
             // Запрос на аренду книги
             if (isBookForReadingRoomOnly) {
-                System.out.println("Данная книга доступна в аренду только в читальном зале. Арендовать книгу на 3 часа? (да/нет)");
+                System.out.println("Данная книга доступна в аренду только в читальном зале");
+                System.out.println("Арендовать книгу на 3 часа? (да/нет)");
             } else {
                 System.out.println("Книга " + modelBook.getTitle() + " найдена. Выдать книгу на неделю? (да/нет)");
             }

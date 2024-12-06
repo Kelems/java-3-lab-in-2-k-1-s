@@ -24,10 +24,8 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _IsBookAvailableResponse_QNAME = new QName("http://service.example.org/", "isBookAvailableResponse");
-    private final static QName _IsBookForReadingRoomOnlyResponse_QNAME = new QName("http://service.example.org/", "isBookForReadingRoomOnlyResponse");
-    private final static QName _IsBookAvailable_QNAME = new QName("http://service.example.org/", "isBookAvailable");
-    private final static QName _IsBookForReadingRoomOnly_QNAME = new QName("http://service.example.org/", "isBookForReadingRoomOnly");
+    private final static QName _CanBorrowBookResponse_QNAME = new QName("http://service.example.org/", "canBorrowBookResponse");
+    private final static QName _CanBorrowBook_QNAME = new QName("http://service.example.org/", "canBorrowBook");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.example.client
@@ -37,79 +35,45 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link IsBookForReadingRoomOnly }
+     * Create an instance of {@link CanBorrowBook }
      * 
      */
-    public IsBookForReadingRoomOnly createIsBookForReadingRoomOnly() {
-        return new IsBookForReadingRoomOnly();
+    public CanBorrowBook createCanBorrowBook() {
+        return new CanBorrowBook();
     }
 
     /**
-     * Create an instance of {@link IsBookAvailable }
+     * Create an instance of {@link CanBorrowBookResponse }
      * 
      */
-    public IsBookAvailable createIsBookAvailable() {
-        return new IsBookAvailable();
+    public CanBorrowBookResponse createCanBorrowBookResponse() {
+        return new CanBorrowBookResponse();
     }
 
     /**
-     * Create an instance of {@link IsBookAvailableResponse }
+     * Create an instance of {@link Reader }
      * 
      */
-    public IsBookAvailableResponse createIsBookAvailableResponse() {
-        return new IsBookAvailableResponse();
+    public Reader createReader() {
+        return new Reader();
     }
 
     /**
-     * Create an instance of {@link IsBookForReadingRoomOnlyResponse }
+     * Create an instance of {@link JAXBElement }{@code <}{@link CanBorrowBookResponse }{@code >}}
      * 
      */
-    public IsBookForReadingRoomOnlyResponse createIsBookForReadingRoomOnlyResponse() {
-        return new IsBookForReadingRoomOnlyResponse();
+    @XmlElementDecl(namespace = "http://service.example.org/", name = "canBorrowBookResponse")
+    public JAXBElement<CanBorrowBookResponse> createCanBorrowBookResponse(CanBorrowBookResponse value) {
+        return new JAXBElement<CanBorrowBookResponse>(_CanBorrowBookResponse_QNAME, CanBorrowBookResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link Book }
+     * Create an instance of {@link JAXBElement }{@code <}{@link CanBorrowBook }{@code >}}
      * 
      */
-    public Book createBook() {
-        return new Book();
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IsBookAvailableResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://service.example.org/", name = "isBookAvailableResponse")
-    public JAXBElement<IsBookAvailableResponse> createIsBookAvailableResponse(IsBookAvailableResponse value) {
-        return new JAXBElement<IsBookAvailableResponse>(_IsBookAvailableResponse_QNAME, IsBookAvailableResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IsBookForReadingRoomOnlyResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://service.example.org/", name = "isBookForReadingRoomOnlyResponse")
-    public JAXBElement<IsBookForReadingRoomOnlyResponse> createIsBookForReadingRoomOnlyResponse(IsBookForReadingRoomOnlyResponse value) {
-        return new JAXBElement<IsBookForReadingRoomOnlyResponse>(_IsBookForReadingRoomOnlyResponse_QNAME, IsBookForReadingRoomOnlyResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IsBookAvailable }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://service.example.org/", name = "isBookAvailable")
-    public JAXBElement<IsBookAvailable> createIsBookAvailable(IsBookAvailable value) {
-        return new JAXBElement<IsBookAvailable>(_IsBookAvailable_QNAME, IsBookAvailable.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IsBookForReadingRoomOnly }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://service.example.org/", name = "isBookForReadingRoomOnly")
-    public JAXBElement<IsBookForReadingRoomOnly> createIsBookForReadingRoomOnly(IsBookForReadingRoomOnly value) {
-        return new JAXBElement<IsBookForReadingRoomOnly>(_IsBookForReadingRoomOnly_QNAME, IsBookForReadingRoomOnly.class, null, value);
+    @XmlElementDecl(namespace = "http://service.example.org/", name = "canBorrowBook")
+    public JAXBElement<CanBorrowBook> createCanBorrowBook(CanBorrowBook value) {
+        return new JAXBElement<CanBorrowBook>(_CanBorrowBook_QNAME, CanBorrowBook.class, null, value);
     }
 
 }

@@ -19,6 +19,7 @@ public class ReadingCard {
         readingCards.add(new ReadingCard(2, 2, new Date(), new Date(System.currentTimeMillis() + 31536000000L), true));
         readingCards.add(new ReadingCard(3, 3, new Date(), new Date(System.currentTimeMillis() + 31536000000L), true));
         readingCards.add(new ReadingCard(4, 4, new Date(), new Date(System.currentTimeMillis() + 31536000000L), true));
+        readingCards.add(new ReadingCard(5, 6, new Date(), new Date(System.currentTimeMillis() + 31536000000L), true));
     }
 
     // Конструкторы

@@ -18,35 +18,33 @@ public class RentalService implements IRentalService {
     public boolean rentBook(Reader reader, Book book, boolean isReadingRoomOnly) {
         System.out.println("Запуск сервиса Rent");
 
-        // Проверка, что читатель может взять книгу
-        if (!canRentBook(reader, book, isReadingRoomOnly)) {
-            return false;
-        }
-
-        // Проверка, что книга есть
-        if (book == null) {
-            return false;
-        }
-
         // Установка статуса книги как "выдана"
         book.setIssued(true);
+        System.out.println("Установили статус выдачи на true... " + book.isIssued());
 
         // Установка даты аренды
         LocalDateTime rentalDate = LocalDateTime.now();
+        System.out.println("Установили статус дату выдачи... " + rentalDate);
         // Установка срока возврата
         LocalDateTime expectedReturnDate;
         if (isReadingRoomOnly) {
             //если в читальном зале
             expectedReturnDate = rentalDate.plusHours(3);
+            System.out.println("Установили срок в 3 часа... " + expectedReturnDate);
         } else {
             //если не в читальном зале
             expectedReturnDate = rentalDate.plusDays(7);
+            System.out.println("Установили срок в 7 дней... " + expectedReturnDate);
         }
 
         // Создание новой аренды и добавление ее в список аренд
         Rental rental = new Rental(Rental.getRentals().size() + 1, book.getId(), reader.getId(), rentalDate, null);
         rental.setExpectedReturnDate(expectedReturnDate);
         Rental.getRentals().add(rental);
+
+        // Получение последней аренды из списка
+        Rental lastRental = Rental.getRentals().get(Rental.getRentals().size() - 1);
+        System.out.println("Данные выдачи: " + lastRental);
 
         System.out.println("Сервис Rent выполнен");
 
